@@ -20,6 +20,9 @@ module.exports = {
     filename: 'bundle.js',
     path: path.join(__dirname, 'dist')
   },
+  devServer: {
+	disableHostCheck: true,
+  }   
   module: {
     loaders: [
       {
