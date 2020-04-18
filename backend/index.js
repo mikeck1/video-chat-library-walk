@@ -1,13 +1,15 @@
+require('dotenv').config()
+
 const config = require('./config');
 const express = require('express');
-const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')();
 const { videoToken } = require('./tokens');
+const path = require('path');
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(pino);
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+app.use(express.static('build'));
 
 const sendTokenResponse = (token, res) => {
 	  res.set('Content-Type', 'application/json');
@@ -38,6 +40,12 @@ app.post('/api/video/token', (req, res) => {
 	  sendTokenResponse(token, res);
 });
 
-app.listen(3001, () =>
-	  console.log('Express server is running on localhost:3001')
+
+app.get('/*', function(req, res) {
+      console.log('accessing the react app');
+      res.sendFile('index.html');
+});
+
+app.listen(3000, () =>
+	  console.log('Express server is running on localhost:3000')
 );
