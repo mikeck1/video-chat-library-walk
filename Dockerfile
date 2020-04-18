@@ -1,11 +1,11 @@
-FROM node:8-slim
+FROM node:alpine
 
-WORKDIR /opt/app/
+WORKDIR /usr/src/app
 
-COPY package.json yarn.lock ./
+COPY package*.json ./
 
-RUN yarn install
+RUN npm install
 
 COPY . .
 
-CMD yarn run dev
+CMD npm run dev
