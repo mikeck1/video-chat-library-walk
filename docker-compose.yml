@@ -1,13 +1,18 @@
 version: '3'
 services:
-  app:
-    build: .
+  backend:
+    build: backend/.
     environment:
       - PORT=3000
       - NODE_ENV=dev
       - ENV_NAME=local
+    image: tttvlw-backend
+    container_name: tttvlw-backend
+
+  proxy-server:
+    build: nginx/.
     ports:
-      - "3000:3000"
-      - "3001:3001"
-    volumes:
-    - ./src:/opt/app/src
+      - 80:80
+    restart: always
+    image: tttvlw-proxy-server
+    container_name: tttvlw-proxy-server

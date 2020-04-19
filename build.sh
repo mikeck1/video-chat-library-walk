@@ -1,4 +1,2 @@
-cd ./client
-npm run build
-cp -r build ../backend
-cd ../backend
+npm run --prefix client/ build
+cp -r client/build nginx/
