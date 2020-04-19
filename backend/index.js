@@ -43,6 +43,7 @@ app.post('/api/video/token', (req, res) => {
 
 app.get('/*', function(req, res) {
       console.log('call has arrived');
+      res.send('hello world');
 });
 
 app.listen(3000, () =>
