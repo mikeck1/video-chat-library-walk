@@ -8,5 +8,7 @@ npm run --silent --prefix client/ build > /dev/null
 cp -r client/build .
 
 echo "Rebuilding container with new production build"
-# build the containers
+# build the container
 docker build -t tttvlw-production backend/
+docker tag tttvlw-production shubhamkulkarni01/video-chat-library-walk
+docker push shubhamkulkarni01/video-chat-library-walk
