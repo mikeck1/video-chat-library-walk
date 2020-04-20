@@ -10,5 +10,5 @@ cp -r client/build .
 echo "Rebuilding container with new production build"
 # build the container
 docker build -t tttvlw-production backend/
-docker tag tttvlw-production shubhamkulkarni01/video-chat-library-walk
-docker push shubhamkulkarni01/video-chat-library-walk
+docker tag tritontalk/tritontalk
+docker push tritontalk/tritontalk
